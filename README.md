@@ -6,4 +6,4 @@ Simple unstyled todo app using React Hooks and context. It follows the duck patt
 
 MVP is here:
 
-todo-react-context-hooks.surge.sh
+https://todo-react-context-hooks.surge.sh/
