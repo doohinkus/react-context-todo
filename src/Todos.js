@@ -4,23 +4,17 @@ import React, {
   useState
 } from 'react';
 
-import { reducer, 
-  initialState, 
+export default function Todos({state, send, actions: { 
   unsetEditTodo,
   editTodo,
   toggleComplete,
   deleteTodo,
   addTodo 
-} from './context.duck';
+}}){
 
-
-
-export default function Todos(){
-
-  const [state, send] = React.useReducer(reducer, initialState);
   const inputRef = useRef(null);
   const [editValue, setEditValue] = useState(null);
-  const [addValue, setAddValue] = useState(null);
+  const [addValue, setAddValue] = useState("");
  
   useEffect(() => {
     if(inputRef.current){
