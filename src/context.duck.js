@@ -1,4 +1,10 @@
-
+// actions 
+const UNSET_EDIT_TODO = "UNSET_EDIT_TODO";
+const EDIT_TODO = "EDIT_TODO"; 
+const SET_EDIT_TODO = "SET_EDIT_TODO"; 
+const TOGGLE_IS_COMPLETE = "TOGGLE_IS_COMPLETE";
+const DELETE_TODO = "DELETE_TODO";
+const ADD_TODO = "ADD_TODO";
 
 // default state
 export const initialState = {
@@ -30,7 +36,7 @@ export const initialState = {
 // reducer
 export function reducer(state, action){
   switch(action.type){
-    case ("TOGGLE_IS_COMPLETE"):
+    case (TOGGLE_IS_COMPLETE):
       const toggledTodos = state
         .todos
         .map(currentTodo => currentTodo.id === action.payload 
@@ -41,7 +47,7 @@ export function reducer(state, action){
              todos: toggledTodos
           }
       break;
-    case ("SET_EDIT_TODO"):
+    case (SET_EDIT_TODO):
       const setEditTodos = state
         .todos
         .map(currentTodo => currentTodo.id === action.payload.id
@@ -53,7 +59,7 @@ export function reducer(state, action){
              isEditing: true
           }
       break;
-    case ("UNSET_EDIT_TODO"):
+    case (UNSET_EDIT_TODO):
         const unsetEditTodos = state
         .todos
         .map(currentTodo => currentTodo.id === action.payload.id
@@ -65,7 +71,7 @@ export function reducer(state, action){
              isEditing: false
           }
       break;
-     case ("EDIT_TODO"):
+     case (EDIT_TODO):
       console.log(action.payload, state.todos);
      const editedTodos =  state
         .todos
@@ -77,7 +83,7 @@ export function reducer(state, action){
              todos: editedTodos
           }
       break;
-    case "ADD_TODO":
+    case (ADD_TODO):
       return {
         ...state,
         todos: [
@@ -110,35 +116,37 @@ export function reducer(state, action){
 
 export function unsetEditTodo(todo){
   return { 
-    type: "UNSET_EDIT_TODO", 
+    type: UNSET_EDIT_TODO, 
     payload: todo
   };
 }
 
 export function editTodo(todo, editValue){
   return {
-    type: "EDIT_TODO", 
+    type: EDIT_TODO, 
     payload: { todo, editValue }
   }
 }
 
 export function toggleComplete(todo){
   return {
-    type: "TOGGLE_IS_COMPLETE", 
+    type: TOGGLE_IS_COMPLETE, 
     payload: todo.id
   }
 }
 
 export function deleteTodo(todo){
   return {
-    type: "DELETE_TODO", 
+    type: DELETE_TODO, 
     payload: todo.id
   }
 }
 
 export function addTodo(todo){
   return {
-    type: "ADD_TODO",
+    type: ADD_TODO,
     payload: todo
   }
 }
+
+// middleware
